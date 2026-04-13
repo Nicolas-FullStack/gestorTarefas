@@ -7,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrl: './task-filter.css',
 })
 export class TaskFilter {
-
+      
 }
