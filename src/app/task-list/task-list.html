@@ -1,20 +1,20 @@
 <app-task-filter></app-task-filter>
 
-<Div>
+<Div class="container">
     <h2>A Fazer</h2>
     <ul>
-        <li>
-            <input type="checkbox" name="completed">
-            <a>Tarefa A</a>
-            <div>
-            <button>X</button>
+        <li *ngFor="let task of tasks">
+            <input type="checkbox" (change)="updateTasks()" [(ngModel)]="task.completed" name="completed">
+            <a [routerLink]="['/taskdetails', task.id]" [ngClass]="task.completed ? 'task-complete' : ''" >{{task.name}}</a>
+            <div class="button-box">
+                <button (click)="removeTask(task)" >X</button>
             </div>
         </li>
     </ul>
     
-    <form>
-        <input type="text" name="newTask" placeholder="Adicionar Tarefa">
+    <form (ngSubmit)="addTask()" #taskForm="ngForm" >
+        <input type="text" [(ngModel)]="newTask.name" name="newTask" placeholder="Adicionar Tarefa" required="">
 
-        <button type="submit">+</button>
+        <button type="submit" [disabled]="!taskForm.form.valid">+</button>
     </form>
 </Div>
