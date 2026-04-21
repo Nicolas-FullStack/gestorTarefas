@@ -5,7 +5,7 @@
     <ul>
         <li *ngFor="let task of tasks">
             <input type="checkbox" (change)="updateTasks()" [(ngModel)]="task.completed" name="completed">
-            <a [routerLink]="['/taskDetails', task.id]" [ngClass]="task.completed ? 'task-complete' : ''" >{{task.name}}</a>
+            <a [routerLink]="['/taskDetails', task.id]" [ngClass]="task.completed ? 'task-completed' : ''" >{{task.name}}</a>
             <div class="button-box">
                 <button (click)="removeTask(task)" >X</button>
             </div>
